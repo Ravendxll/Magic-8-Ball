@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Magic 8 Ball</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 20px; }
+        #response { margin-top: 20px; font-size: 1.5em; font-weight: bold; }
+        #question { margin-top: 10px; font-size: 1.2em; }
+    </style>
+</head>
+<body>
+    <h1>Magic 8 Ball Fortune Teller</h1>
+    <p>Ask the Magic 8 Ball a yes or no question and see what it says!</p>
+
+    <button id="askButton">Ask the Magic 8 Ball</button>
+    <div id="question"></div>
+    <div id="response"></div>
+
+    <script>
+        // Array of possible responses
+        const responses = [
+            'Yes, definitely!',
+            'No, not at all.',
+            'Maybe, try again later.',
+            'Definitely not.',
+            'Yes, but with some hesitation.',
+            'No way!',
+            'It is certain.',
+            'I would not count on it.'
+        ];
+
+        // Event listener for the button
+        document.getElementById('askButton').addEventListener('click', function() {
+            // Prompt user for a question
+            const question = prompt('Ask your yes or no question:');
+            
+            if (question) {
+                // Get a random response
+                const randomIndex = Math.floor(Math.random() * responses.length);
+                const response = responses[randomIndex];
+
+                // Display the question and response
+                document.getElementById('question').innerText = 'You asked: "' + question + '"';
+                document.getElementById('response').innerText = 'Magic 8 Ball says: ' + response;
+            } else {
+                document.getElementById('question').innerText = '';
+                document.getElementById('response').innerText = 'Please ask a question.';
+            }
+        });
+    </script>
+</body>
+</html>
